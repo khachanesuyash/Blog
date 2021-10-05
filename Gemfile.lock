@@ -1,3 +1,29 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 4caf7c25b07e6c7271b02e46dc3a7985cca61162
+  specs:
+    ransack (2.4.2)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
+
+GIT
+  remote: https://github.com/kaminari/kaminari
+  revision: 73b93405b95615b5ad3f53c3dffe419a59890cad
+  specs:
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -218,10 +244,12 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   jbuilder (~> 2.7)
+  kaminari!
   listen (~> 3.3)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
+  ransack!
   sass-rails (>= 6)
   selenium-webdriver
   spring

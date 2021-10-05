@@ -3,7 +3,9 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:category).all
+    @q = Post.ransack(params[:q])
+    @posts = @q.result().page(params[:page]).per(10)
+    # @posts = Post.includes(:category).page(params[:page]).per(10)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -64,6 +66,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :published, :category_id, :all_tags)
+      params.require(:post).permit(:title, :description, :published, :category_id, :all_tags, tag_ids:[])
     end
 end
