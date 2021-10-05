@@ -1,0 +1,15 @@
+<% @posts.each do |post| %>
+      <div class="row">
+        <div class="col-sm-12">
+            <h2><%= post.title %></h2>
+            <%=simple_format post.description %>
+        
+
+          <span>
+            <%= post.category.name %>
+          </span>
+          <%= post.all_tags %>
+        </div>
+     </div>
+<hr>
+<% end %>
