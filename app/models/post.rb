@@ -1,10 +1,13 @@
 class Post < ApplicationRecord
     belongs_to :category
 
-    has_many :taggings, dependent: :delete_all
+    has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
 
+    # File Uploads
+    has_one_attached :featured_image
 
+    # Rich action text
     has_rich_text :description
 
     def all_tags= (names)

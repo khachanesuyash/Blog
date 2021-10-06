@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Tagging.delete_all
 Post.delete_all
 Category.delete_all
+Tag.delete_all
 User.delete_all
 
 Category.create(name: "Programming")
@@ -41,9 +42,9 @@ end
 Category.all.each do |category|
     10.times do |i|
         Post.create(
-            title: "Post #{i}",
+            title: "Post #{i}",description: "Post #{i} Details",
             tags: i % 2 == 0 ? [javascript, react] : [node, ruby],
-            description: "Post #{i} details",category: category,
+            category: category
         )
     end
 end

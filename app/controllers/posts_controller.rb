@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: [ :show, :edit, :update, :destroy]
+
+  def process_post
+    PostPublishingJob.perform_later
+    render plain: "Delayed Job"
+  end
 
   # GET /posts or /posts.json
   def index
@@ -10,6 +15,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    # render json: @post.as_json(only: [:id, :title])
   end
 
   # GET /posts/new
@@ -66,6 +72,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :published, :category_id, :all_tags, tag_ids:[])
+      params.require(:post).permit(:id, :title, :description, :published, :category_id, :all_tags, :featured_image, tag_ids:[])
     end
 end
