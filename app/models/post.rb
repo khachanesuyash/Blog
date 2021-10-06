@@ -4,6 +4,9 @@ class Post < ApplicationRecord
     has_many :taggings, dependent: :delete_all
     has_many :tags, through: :taggings
 
+
+    has_rich_text :description
+
     def all_tags= (names)
         if names.blank?
             return
